@@ -15,29 +15,28 @@ namespace WeatherForcastingSystem
 
 
 
-        /// <summary>
-        /// ooral waar ek ge-edit het se comments sal >> || << die simbool voor aan he
-        /// jammer ek het jou spacing bietjie rond geneek
-        /// heya Ben, watch your language ;)
-        /// </summary>
+        
+        
+        
+        
         
 
 
-        // || added static before int
-        static int iMinTemp, iMaxTemp, iWindspeed , iCount, iPrecipitation;//Public veriables for task 1
-        int x, y;//The possition in the array.
-        int iCity;//This is to incrase the city array.
+        
+        static int iMinTemp, iMaxTemp, iWindspeed , iCount, iPrecipitation;
+        int x, y;
+        int iCity;
         
         
-        // || your varibles where complaining about not being static, so i made them static. but they are still varibles
+        
 
-         string[] arrCity = new string[iCount];        //I need it to take my iCount as a uknown veriable.
-        DateTime[] arrDate = new DateTime[iCount];     //I need it to take my iCount as a uknown veriable.
-        int[] arrMinTemp = new int[iCount];            //I need it to take my iCount as a uknown veriable.
-        int[] arrMaxTemp = new int[iCount];            //I need it to take my iCount as a uknown veriable.
-        int[] arrWindSpeed = new int[iCount];         //I need it to take my iCount as a uknown veriable.
-        int[] arrPrecipitation = new int[iCount];       //I need it to take my iCount as a uknown veriable.
-        int[] arrHumidity = new int[iCount];            //I need it to take my iCount as a uknown veriable.
+         string[] arrCity = new string[iCount];        
+        DateTime[] arrDate = new DateTime[iCount];     
+        int[] arrMinTemp = new int[iCount];            
+        int[] arrMaxTemp = new int[iCount];            
+        int[] arrWindSpeed = new int[iCount];         
+        int[] arrPrecipitation = new int[iCount];       
+        int[] arrHumidity = new int[iCount];            
 
 
 
@@ -49,18 +48,18 @@ namespace WeatherForcastingSystem
 
         private void btnEData_Click(object sender, EventArgs e)
         {
-            x = 0;   // || i added converstion becase the value you are trying to store are decimals.
-                     // || note converting a decimal to a integer could potential cause loss of sensitive data(google that)
-                     // || solution to above problem is then store your values as decimals or reals
-           int iMinTemp = Convert.ToInt32(nudMin.Value);              //I want to take numeric up down to int.
-            int iMaxTemp = Convert.ToInt32(nudMax.Value);              //I want to take numeric up down to int.
-            int iWindSpeed = Convert.ToInt32(nudWind.Value);            //I want to take numeric up down to int.
-            int iPrecipitation = Convert.ToInt32(nudPrec.Value);        //I want to take numeric up down to int.
-            int iHumidity = Convert.ToInt32(nudHumidity.Value);         //I want to take numeric up down to int.
+            x = 0;   
+                     
+                     
+           int iMinTemp = Convert.ToInt32(nudMin.Value);              
+            int iMaxTemp = Convert.ToInt32(nudMax.Value);              
+            int iWindSpeed = Convert.ToInt32(nudWind.Value);            
+            int iPrecipitation = Convert.ToInt32(nudPrec.Value);        
+            int iHumidity = Convert.ToInt32(nudHumidity.Value);         
 
-            // || Once you declare the array, you dont have to use the datatypes infront of it again
-            arrCity[x] = txtCity.Text;         //It is not taking my x int. || you where redeclaring the array
-            arrDate[x] = dTime.MaxDate;        // it is not taking my x int.  
+            
+            arrCity[x] = txtCity.Text;         
+            arrDate[x] = dTime.MaxDate;         
             arrMinTemp[x] = iMinTemp;//insirt Minimum tempreture in array.
             arrMaxTemp[x] = iMaxTemp;//insirt Maximum tempreture in array.
             arrPrecipitation[x] = iPrecipitation;//insert Precipitation.
@@ -88,9 +87,9 @@ namespace WeatherForcastingSystem
             while (x < iCount)
                
             {
-                // || first error was your array's didnt have indexes(die x)
-                // || second error, your if didnt encapsulate both arguments( you needed to put both in one bracket)
-                if( (arrDate[x]> dStart.MaxDate) & (arrDate[x] < dtEnd.Date)  )   //I need to add the dates between start date and end date to the grid view.
+                
+                
+                if( (arrDate[x]> dStart.MaxDate) & (arrDate[x] < dtEnd.Date)  )   
                 {
                     dgv1.Rows[x].Cells[0].Value = arrDate[x];//Add to grid view.
                     dgv1.Rows[x].Cells[1].Value = arrCity[x];//Add to grid view.
@@ -125,7 +124,11 @@ namespace WeatherForcastingSystem
             x=0;
             y=0;
             iCount = 0;
-
+            Forcast fs = new Forcast("Brooklen" , Convert.ToDateTime("2019/05/23") , -4 , 18 , "Snow" , 17 , 56  );
+            FileHandler fh = new FileHandler("CrossbowCat.txt");
+            List<Forcast> theList = new List<Forcast>();
+            theList.Add(fs);
+            fh.WriteToTXT(theList);
 
         }
     }
