@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data;
 
 namespace WeatherForcastingSystem
 {
     public partial class frmMain : Form
     {
+        DataHandler DH = new DataHandler();
 
 
 
@@ -38,6 +40,21 @@ namespace WeatherForcastingSystem
             int iWindSpeed = int.Parse(nudWind.Value.ToString());
             Forcast fs = new Forcast(sCity,sDate,iMinTemp,iMaxTemp,sPercipitation,iHumidity,iWindSpeed);
             fs.Save();
+            for (int i = 0; i < cmbCity1.Items.Count; i++)
+            {
+                if (txtCity.Text != cmbCity1.Items[i])
+                {
+                    DH.InsertCity(txtCity.Text);
+
+                }
+
+            }
+            
+
+            
+            
+
+            
             MessageBox.Show("Forcast has been captured.");
 
 
@@ -86,37 +103,22 @@ namespace WeatherForcastingSystem
 
         private void Form1_Load(object sender, EventArgs e)// Form 1 load.
         {
-            FileHandler cn = new FileHandler("Cities.csv");
+            DataHandler cn = new DataHandler();
 
-            List<string> cityName = new List<string>();
+            List<Forcast> cityName = new List<Forcast>();
+            DataTable dt = cn.selectCities();
 
-
-            foreach (string name in cn.ReadFromTXT())
+            foreach (DataRow name in dt.Rows)
             {
-                string[] lines = name.Split(',');
-                cityName.Add(lines[0]);
-
+                
+                cityName.Add( new Forcast(name["City"].ToString()));
+                
             }
             cmbCity1.DataSource = cityName;
             cmbCity2.DataSource = cityName;
 
             
-            Forcast fs = new Forcast();
-
-            FileHandler fh = new FileHandler("Forcast.csv");
-            fh.ReadFromTXT();
-
-            FileHandler cityfile = new FileHandler("Cities.csv");
-            cityfile.ReadFromTXT();
-
-            fh = new FileHandler("User.csv");
            
-            List<string> Thelist = new List<string>();
-
-           
-            User us = new User();
- 
-            fh.ReadFromTXT();
 
             cmbCity1.Enabled =false;                // auto disable on startup
             txtCity.Enabled = false;

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data;
 
 namespace WeatherForcastingSystem
 {
@@ -41,7 +42,7 @@ namespace WeatherForcastingSystem
             txtUsername.Hide();
             txtPassword.Hide();
             btnApply.Hide();
-            FileHandler fh = new FileHandler("User.csv");// call file handler to use user file.
+            DataHandler dh = new DataHandler("");// call file handler to use user file.
             
             List<string> userinfo = new  List<string>();
             
