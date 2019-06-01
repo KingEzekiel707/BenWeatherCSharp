@@ -8,3 +8,16 @@ C:\Users\jande\OneDrive\Desktop\PROG Assignment 18017300 Ben Gouws\WeatherForcas
 C:\Users\jande\OneDrive\Desktop\PROG Assignment 18017300 Ben Gouws\WeatherForcastingSystem\WeatherForcastingSystem\bin\Debug\WeatherForcastingSystem.pdb
 C:\Users\jande\OneDrive\Desktop\PROG Assignment 18017300 Ben Gouws\WeatherForcastingSystem\WeatherForcastingSystem\obj\Debug\WeatherForcastingSystem.exe
 C:\Users\jande\OneDrive\Desktop\PROG Assignment 18017300 Ben Gouws\WeatherForcastingSystem\WeatherForcastingSystem\obj\Debug\WeatherForcastingSystem.pdb
+C:\Users\Big Ben\Documents\GitHub\BenWeatherCSharp\PROG Assignment 18017300 Ben Gouws\WeatherForcastingSystem\WeatherForcastingSystem\bin\Debug\WeatherForcastingSystem.exe.config
+C:\Users\Big Ben\Documents\GitHub\BenWeatherCSharp\PROG Assignment 18017300 Ben Gouws\WeatherForcastingSystem\WeatherForcastingSystem\bin\Debug\WeatherForcastingSystem.exe
+C:\Users\Big Ben\Documents\GitHub\BenWeatherCSharp\PROG Assignment 18017300 Ben Gouws\WeatherForcastingSystem\WeatherForcastingSystem\bin\Debug\WeatherForcastingSystem.pdb
+C:\Users\Big Ben\Documents\GitHub\BenWeatherCSharp\PROG Assignment 18017300 Ben Gouws\WeatherForcastingSystem\WeatherForcastingSystem\obj\Debug\WeatherForcastingSystem.csprojAssemblyReference.cache
+C:\Users\Big Ben\Documents\GitHub\BenWeatherCSharp\PROG Assignment 18017300 Ben Gouws\WeatherForcastingSystem\WeatherForcastingSystem\obj\Debug\WeatherForcastingSystem.Properties.Resources.resources
+C:\Users\Big Ben\Documents\GitHub\BenWeatherCSharp\PROG Assignment 18017300 Ben Gouws\WeatherForcastingSystem\WeatherForcastingSystem\obj\Debug\WeatherForcastingSystem.csproj.GenerateResource.cache
+C:\Users\Big Ben\Documents\GitHub\BenWeatherCSharp\PROG Assignment 18017300 Ben Gouws\WeatherForcastingSystem\WeatherForcastingSystem\obj\Debug\WeatherForcastingSystem.csproj.CoreCompileInputs.cache
+C:\Users\Big Ben\Documents\GitHub\BenWeatherCSharp\PROG Assignment 18017300 Ben Gouws\WeatherForcastingSystem\WeatherForcastingSystem\obj\Debug\WeatherForcastingSystem.exe
+C:\Users\Big Ben\Documents\GitHub\BenWeatherCSharp\PROG Assignment 18017300 Ben Gouws\WeatherForcastingSystem\WeatherForcastingSystem\obj\Debug\WeatherForcastingSystem.pdb
+C:\Users\Big Ben\Documents\GitHub\BenWeatherCSharp\PROG Assignment 18017300 Ben Gouws\WeatherForcastingSystem\WeatherForcastingSystem\obj\Debug\WeatherForcastingSystem.frmAdminLogin.resources
+C:\Users\Big Ben\Documents\GitHub\BenWeatherCSharp\PROG Assignment 18017300 Ben Gouws\WeatherForcastingSystem\WeatherForcastingSystem\obj\Debug\WeatherForcastingSystem.frmMain.resources
+C:\Users\Big Ben\Documents\GitHub\BenWeatherCSharp\PROG Assignment 18017300 Ben Gouws\WeatherForcastingSystem\WeatherForcastingSystem\obj\Debug\WeatherForcastingSystem.frmLogin.resources
+C:\Users\Big Ben\Documents\GitHub\BenWeatherCSharp\PROG Assignment 18017300 Ben Gouws\WeatherForcastingSystem\WeatherForcastingSystem\obj\Debug\WeatherForcastingSystem.frmAdminControlls.resources

@@ -10,62 +10,41 @@ using System.Windows.Forms;
 
 namespace WeatherForcastingSystem
 {
-    public partial class Form1 : Form
+    public partial class frmMain : Form
     {
 
 
 
-        /// <summary>
-        /// ooral waar ek ge-edit het se comments sal >> || << die simbool voor aan he
-        /// jammer ek het jou spacing bietjie rond geneek
-        /// heya Ben, watch your language ;)
-        /// </summary>
+        
+        
+        
+        
         
 
 
-        // || added static before int
-        static int iMinTemp, iMaxTemp, iWindspeed , iCount, iPrecipitation;//Public veriables for task 1
-        int x, y;//The possition in the array.
-        int iCity;//This is to incrase the city array.
         
-        
-        // || your varibles where complaining about not being static, so i made them static. but they are still varibles
-
-         string[] arrCity = new string[iCount];        //I need it to take my iCount as a uknown veriable.
-        DateTime[] arrDate = new DateTime[iCount];     //I need it to take my iCount as a uknown veriable.
-        int[] arrMinTemp = new int[iCount];            //I need it to take my iCount as a uknown veriable.
-        int[] arrMaxTemp = new int[iCount];            //I need it to take my iCount as a uknown veriable.
-        int[] arrWindSpeed = new int[iCount];         //I need it to take my iCount as a uknown veriable.
-        int[] arrPrecipitation = new int[iCount];       //I need it to take my iCount as a uknown veriable.
-        int[] arrHumidity = new int[iCount];            //I need it to take my iCount as a uknown veriable.
-
-
-
-
-        string sCity;//to capture the city name and put it in a array later.
-        DateTime dDate;//to capture the date and put it in a array later.
 
         
 
         private void btnEData_Click(object sender, EventArgs e)
         {
-            x = 0;   // || i added converstion becase the value you are trying to store are decimals.
-                     // || note converting a decimal to a integer could potential cause loss of sensitive data(google that)
-                     // || solution to above problem is then store your values as decimals or reals
-           int iMinTemp = Convert.ToInt32(nudMin.Value);              //I want to take numeric up down to int.
-            int iMaxTemp = Convert.ToInt32(nudMax.Value);              //I want to take numeric up down to int.
-            int iWindSpeed = Convert.ToInt32(nudWind.Value);            //I want to take numeric up down to int.
-            int iPrecipitation = Convert.ToInt32(nudPrec.Value);        //I want to take numeric up down to int.
-            int iHumidity = Convert.ToInt32(nudHumidity.Value);         //I want to take numeric up down to int.
+           
+            string sCity = txtCity.Text;
+            string sDate = dTime.Value.ToString();
+            int iMinTemp = int.Parse(nudMin.Value.ToString());
+            int iMaxTemp = int.Parse(nudMax.Value.ToString());
+            string sPercipitation = txtPercipitation.Text;
+            int iHumidity = int.Parse(nudHumidity.Value.ToString());
+            int iWindSpeed = int.Parse(nudWind.Value.ToString());
+            Forcast fs = new Forcast(sCity,sDate,iMinTemp,iMaxTemp,sPercipitation,iHumidity,iWindSpeed);
+            fs.Save();
+            MessageBox.Show("Forcast has been captured.");
 
-            // || Once you declare the array, you dont have to use the datatypes infront of it again
-            arrCity[x] = txtCity.Text;         //It is not taking my x int. || you where redeclaring the array
-            arrDate[x] = dTime.MaxDate;        // it is not taking my x int.  
-            arrMinTemp[x] = iMinTemp;//insirt Minimum tempreture in array.
-            arrMaxTemp[x] = iMaxTemp;//insirt Maximum tempreture in array.
-            arrPrecipitation[x] = iPrecipitation;//insert Precipitation.
-            arrHumidity[x] = iHumidity;
-            iCount++;//icrease iCount to move to next array.
+
+
+
+
+        
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -73,39 +52,24 @@ namespace WeatherForcastingSystem
 
         }
 
-        private void btnView_Click(object sender, EventArgs e)
-        { DateTime dtStart,dtEnd;
-            dtStart = dStart.MaxDate;
-            dtEnd = dEnd.MinDate;
-            x = 1;
-            dgv1.Rows[0].Cells[0].Value = "Date";
-            dgv1.Rows[0].Cells[1].Value = "City";
-            dgv1.Rows[0].Cells[2].Value = "Minimum Tempreture";
-            dgv1.Rows[0].Cells[3].Value = "Maximum Tempreture";
-            dgv1.Rows[0].Cells[4].Value = "Precipitation";
-            dgv1.Rows[0].Cells[5].Value = "Humidty";
-            dgv1.Rows[0].Cells[6].Value = "Wind Speed";
-            while (x < iCount)
-               
-            {
-                // || first error was your array's didnt have indexes(die x)
-                // || second error, your if didnt encapsulate both arguments( you needed to put both in one bracket)
-                if( (arrDate[x]> dStart.MaxDate) & (arrDate[x] < dtEnd.Date)  )   //I need to add the dates between start date and end date to the grid view.
-                {
-                    dgv1.Rows[x].Cells[0].Value = arrDate[x];//Add to grid view.
-                    dgv1.Rows[x].Cells[1].Value = arrCity[x];//Add to grid view.
-                    dgv1.Rows[x].Cells[2].Value = arrMinTemp[x];//Add to grid view.
-                    dgv1.Rows[x].Cells[3].Value = arrMaxTemp[x];//Add to grid view.
-                    dgv1.Rows[x].Cells[4].Value = arrPrecipitation[x];//Add to grid view.
-                    dgv1.Rows[x].Cells[5].Value = arrHumidity[x];//Add to grid view.
-                    dgv1.Rows[x].Cells[6].Value = arrWindSpeed[x];//Add to grid view.
-
-                }
-            } 
+        private void btnLog_Click(object sender, EventArgs e) //Move from main form to user login form.
+        {
+            frmLogin loginForm = new frmLogin();
+            Form.ActiveForm.Hide();
+            loginForm.Show();
             
         }
 
-        public Form1()
+        private void btnAdmin_Click(object sender, EventArgs e)// move from main form to admin login.
+        {
+            frmAdminLogin adminForm = new frmAdminLogin();
+            Form.ActiveForm.Hide();
+            adminForm.Show();
+        }
+
+      
+
+        public frmMain()
         {
             InitializeComponent();
         }
@@ -120,13 +84,137 @@ namespace WeatherForcastingSystem
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)// Form 1 load.
         {
-            x=0;
-            y=0;
-            iCount = 0;
+            FileHandler cn = new FileHandler("Cities.csv");
+
+            List<string> cityName = new List<string>();
 
 
+            foreach (string name in cn.ReadFromTXT())
+            {
+                string[] lines = name.Split(',');
+                cityName.Add(lines[0]);
+
+            }
+            cmbCity1.DataSource = cityName;
+            cmbCity2.DataSource = cityName;
+
+            
+            Forcast fs = new Forcast();
+
+            FileHandler fh = new FileHandler("Forcast.csv");
+            fh.ReadFromTXT();
+
+            FileHandler cityfile = new FileHandler("Cities.csv");
+            cityfile.ReadFromTXT();
+
+            fh = new FileHandler("User.csv");
+           
+            List<string> Thelist = new List<string>();
+
+           
+            User us = new User();
+ 
+            fh.ReadFromTXT();
+
+            cmbCity1.Enabled =false;                // auto disable on startup
+            txtCity.Enabled = false;
+            nudMin.Enabled = false;
+            nudMax.Enabled = false;
+            txtPercipitation.Enabled = false;
+            nudHumidity.Enabled = false;
+            nudWind.Enabled = false;
+            dTime.Enabled = false;
+            btnSave.Enabled = false;
+
+        }
+        public void enableObjects()     // Enable the objects after user has loged in.
+        {
+            cmbCity1.Enabled = true;
+            txtCity.Enabled = true;
+            nudMin.Enabled = true;
+            nudMax.Enabled = true;
+            txtPercipitation.Enabled = true;
+            nudHumidity.Enabled = true;
+            nudWind.Enabled = true;
+            dTime.Enabled = true;
+            btnSave.Enabled = true;
+        }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {   //set the oposing vaulues so that the opisit values are located.
+            int iMaxT = -100;
+            int iMinT = 100;
+            int iHumy = 0;
+            int iWindy = 0;
+            string sSelectedCity = cmbCity2.SelectedItem.ToString();
+            string sStartDate, sEndDate;
+            sStartDate = dStart.Value.ToString();
+            sEndDate = dEnd.Value.ToString();
+
+            FileHandler fh = new FileHandler("Forcast.csv");
+            List<string> lines = fh.ReadFromTXT();
+            
+            List<Forcast> flist = new List<Forcast>();
+            MessageBox.Show(sSelectedCity);
+            foreach (string block in lines)   
+            {
+                string[] vs = block.Split(',');
+                if (vs[0] == sSelectedCity) //Marker
+                {
+                    string[] dSplit = vs[1].Split(' ');                         
+                    string[] x = dSplit[0].Split('/');                     
+                    string[] dStartSplit = sStartDate.Split(' ');               
+                    string[] s = dStartSplit[0].Split('/');
+                    string[] dEndSplit = sEndDate.Split(' ');
+                    string[] y= dEndSplit[0].Split('/');
+
+
+                    //What you are about to see is 15 lines of code in 1 line: Auther Jan De Jager 2019
+                    //"Ben your killing me." ~ Jan De Jager 2019
+                    //x[0] = Selected year, x[1] = Selected month, x[2] = Selected day
+                    //s[0] = Start year, s[1] = start month, s[2] = start day
+                    //e[0] = End Year, e[1] = End month, e[2] = End day
+                    if (!(((int.Parse(x[0]) <= int.Parse(s[0])) &&(int.Parse(x[1]) <= int.Parse(s[1])) && (int.Parse(x[2]) <= int.Parse(s[2]))) || ((int.Parse(x[0]) >= int.Parse(y[0])) && (int.Parse(x[1]) >= int.Parse(y[1])) && (int.Parse(x[2]) >= int.Parse(y[2])))))
+                    {
+                        flist.Add(new Forcast(vs[0], vs[1], int.Parse(vs[2].ToString()), int.Parse(vs[3].ToString()), vs[4], int.Parse(vs[5].ToString()), int.Parse(vs[6].ToString()))); //Add
+                        if (int.Parse(vs[2]) < iMinT) iMinT = int.Parse(vs[2]);
+                        if(int.Parse(vs[3]) > iMinT) iMaxT = int.Parse(vs[3]);
+                        if(int.Parse(vs[5]) > iMinT) iHumy = int.Parse(vs[5]);
+                        if(int.Parse(vs[6]) > iMinT) iWindy = int.Parse(vs[6]);
+                    }
+                }
+                
+                
+
+                
+                 
+            }
+            BindingSource bs = new BindingSource();
+
+
+
+            bs.DataSource = flist;
+            dgv1.DataSource = bs;
+            lblMinTemp.Text = iMinT.ToString();
+            lblMaxTemp.Text = iMaxT.ToString();
+            lblHumid.Text = iHumy.ToString();
+            lblmaxWindy.Text = iWindy.ToString();
+            
+
+           
+
+        }
+
+        private void cmbCity1_SelectedIndexChanged(object sender, EventArgs e)// auto add the text of the item sellected to the text box.
+        {
+            if (true)
+            {
+                txtCity.Text = cmbCity1.SelectedItem.ToString();
+
+            }
         }
     }
 }
+ 
