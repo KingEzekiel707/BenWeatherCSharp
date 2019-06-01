@@ -15,12 +15,12 @@ namespace WeatherForcastingSystem
         private StreamWriter writer;
 
 
-        public FileHandler(string fp1 = "ProblemLogFile.txt")
+        public FileHandler(string fp1 = "ProblemLogFile.txt")// if somthing isn't running right its apears in the file location.
         {
             this.filePath = fp1;
         }
         
-       public void WriteToTXT(List<Forcast> FList)
+       public void WriteToTXT(List<string> FList) // this try method is used to write to the files. if file does not exist it creates a new one.
         {
             try
             {
@@ -33,7 +33,7 @@ namespace WeatherForcastingSystem
                     stream = new FileStream(this.filePath, FileMode.Create, FileAccess.Write);
                 }
                 writer = new StreamWriter(stream);
-                foreach(Forcast forcastData in FList)
+                foreach(string forcastData in FList)
                 {
                     writer.WriteLine(forcastData.ToString());
                     writer.Flush();
@@ -51,5 +51,42 @@ namespace WeatherForcastingSystem
             }
         }
 
+
+        public List<string> ReadFromTXT()// this method is used to read form files.
+        {
+            List<string> adm = new List<string>();
+            try
+            {
+                if (File.Exists(this.filePath))
+                {
+                    stream = new FileStream(this.filePath, FileMode.Open, FileAccess.Read);
+                    reader = new StreamReader(stream);
+                    while (!reader.EndOfStream)
+                    {
+                        adm.Add(reader.ReadLine());
+
+                    }
+                }
+                else
+                {
+                    stream = new FileStream(this.filePath, FileMode.Create);
+                    reader = new StreamReader(stream);
+                }
+                
+               
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                reader.Close();// close the connections.
+                stream.Close();
+            }
+
+            return adm;
+        }
     }
 }

@@ -1,0 +1,38 @@
+ if ((int.Parse(dSplit[0]) < int.Parse(dStartSplit[0])) && (int.Parse(dSplit[0]) < int.Parse(dEndSplit[0])) )// Compairing YYYY
+                    {
+                        flist.Add(new Forcast(vs[0], vs[1], int.Parse(vs[2].ToString()), int.Parse(vs[3].ToString()), vs[4], int.Parse(vs[5].ToString()), int.Parse(vs[6].ToString()))); //Add
+                    }
+                    else
+                    {
+                        if ((int.Parse(dSplit[0]) == int.Parse(dStartSplit[0])) || (int.Parse(dSplit[0]) == int.Parse(dEndSplit[0])))// Compairing YYYY
+                        {
+                            if ((int.Parse(dSplit[1]) < int.Parse(dStartSplit[1])) && (int.Parse(dSplit[1]) < int.Parse(dEndSplit[1])))//Compairing MM
+                            {
+                                flist.Add(new Forcast(vs[0], vs[1], int.Parse(vs[2].ToString()), int.Parse(vs[3].ToString()), vs[4], int.Parse(vs[5].ToString()), int.Parse(vs[6].ToString()))); //Add 
+
+                            }
+                            else
+                            {
+                                if ((int.Parse(dSplit[1]) == int.Parse(dStartSplit[1])) || (int.Parse(dSplit[1]) == int.Parse(dEndSplit[1])))//Compairing MM
+                                {
+                                    if ((int.Parse(dSplit[2]) >= int.Parse(dStartSplit[2])) && (int.Parse(dSplit[2]) <= int.Parse(dEndSplit[2]))) //Commpairing DD
+                                    {
+                                        flist.Add(new Forcast(vs[0], vs[1], int.Parse(vs[2].ToString()), int.Parse(vs[3].ToString()), vs[4], int.Parse(vs[5].ToString()), int.Parse(vs[6].ToString())));//Add
+
+                                    }
+                                    else
+                                    {
+                                        if ((int.Parse(dSplit[2]) >= int.Parse(dStartSplit[2])) || (int.Parse(dSplit[2]) <= int.Parse(dEndSplit[2]))) //Commpairing DD
+                                        {
+                                            flist.Add(new Forcast(vs[0], vs[1], int.Parse(vs[2].ToString()), int.Parse(vs[3].ToString()), vs[4], int.Parse(vs[5].ToString()), int.Parse(vs[6].ToString())));//Add
+                                        }
+
+                                    }
+                                }
+
+                            }
+
+                        }
+                       
+
+                    }
